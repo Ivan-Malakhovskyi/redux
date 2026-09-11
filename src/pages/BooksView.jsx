@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router";
 import * as bookShelfAPI from "../services/bookshelf-api";
 import PageHeading from "../components/PageHeading";
+import Filter from "@/components/Filter";
 
 export default function BooksView() {
   const [books, setBooks] = useState([]);
@@ -14,6 +15,8 @@ export default function BooksView() {
   return (
     <>
       <PageHeading text="Книги" />
+
+      <Filter />
 
       {books.length > 0 ? (
         <ul>

@@ -1,8 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL:
-    "https://my-json-server.typicode.com/Ivan-Malakhovskyi/practice_vanilla_redux_1_part_1",
+  baseURL: "http://localhost:8080",
 });
 
 async function fetchWithErrorHandling(url = "", config = {}) {

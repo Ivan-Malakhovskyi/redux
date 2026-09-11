@@ -10,7 +10,7 @@
     // "style": "warn"
   },
   "rules": {
-    "no-console": "error",
+    // "no-console": "error",
     "no-debugger": "error",
     "no-var": "error",
     "prefer-const": "error",
