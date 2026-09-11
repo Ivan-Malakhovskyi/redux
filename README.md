@@ -36,3 +36,5 @@
 4. Create reducer for handling filter/changeValue
 5. create input + button reset filter (use formik - pro)
 6. Subscribe components on redux state
+
+### Debugger
