@@ -1,31 +1,35 @@
-export const addTask = (text) => {
+import { createAction } from "@reduxjs/toolkit";
+
+export const addTask = createAction("tasks/addTask", (text) => {
   return {
-    type: "tasks/addTask",
     payload: {
       id: crypto.randomUUID(),
       completed: false,
       text,
     },
   };
-};
+});
 
-export const deleteTask = (taskId) => {
+export const deleteTask = createAction("tasks/deleteTask", (taskId) => {
   return {
-    type: "tasks/deleteTask",
     payload: taskId,
   };
-};
+});
 
-export const toggleCompleted = (taskId) => {
-  return {
-    type: "tasks/toggleCompleted",
-    payload: taskId,
-  };
-};
+export const toggleCompleted = createAction(
+  "tasks/toggleCompleted",
+  (taskId) => {
+    return {
+      payload: taskId,
+    };
+  },
+);
 
-export const setStatusFilter = (filter) => {
-  return {
-    type: "filters/setStatusFilter",
-    payload: filter,
-  };
-};
+export const setStatusFilter = createAction(
+  "filters/setStatusFilter",
+  (filter) => {
+    return {
+      payload: filter,
+    };
+  },
+);
