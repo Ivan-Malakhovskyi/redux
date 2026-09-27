@@ -1,7 +1,10 @@
 import React from "react";
+import { useDeleteUserMutation } from "@/redux/usersApi";
 import { Spinner } from "../Spinner";
 
 const UsersListItem = ({ name, phone, status, email, id }) => {
+  const [deleteUser, { isLoading: isDeleting }] = useDeleteUserMutation();
+
   return (
     <li style={{ marginBottom: "20px" }}>
       <p>
@@ -17,7 +20,13 @@ const UsersListItem = ({ name, phone, status, email, id }) => {
         status <strong>{status ? "Active" : "Non-active"}</strong>
       </p>
 
-      <button type="button">"Delete"</button>
+      <button
+        type="button"
+        disabled={isDeleting}
+        onClick={() => deleteUser(id)}
+      >
+        {isDeleting ? <Spinner /> : "Delete"}
+      </button>
     </li>
   );
 };

@@ -1,6 +1,12 @@
 import React from "react";
+import { Navigate } from "react-router";
+import { useCreateUserMutation } from "@/redux/usersApi";
+import { Spinner } from "../Spinner";
 
 const CreateUser = () => {
+  const [createUser, { isSuccess, isLoading: isCreating }] =
+    useCreateUserMutation();
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -13,12 +19,14 @@ const CreateUser = () => {
       status: Boolean(form.elements.status.value),
     };
 
+    createUser(userData);
+
     e.target.reset();
   };
 
   return (
     <>
-      {/* {isSuccess && <Navigate to="/users" />} */}
+      {isSuccess && <Navigate to="/users" />}
       <form
         autoComplete="off"
         style={{
@@ -48,7 +56,9 @@ const CreateUser = () => {
           <input type="checkbox" name="status" defaultValue={false} />
         </label>
 
-        <button type="submit">"Create"</button>
+        <button type="submit" disabled={isCreating}>
+          {isCreating ? <Spinner /> : "Create"}
+        </button>
       </form>
     </>
   );
