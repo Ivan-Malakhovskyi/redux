@@ -1,45 +1,36 @@
-import { useDispatch, useSelector } from "react-redux";
-import { Button } from "../Button/";
+import { useSelector, useDispatch } from "react-redux";
+import { Button } from "@/components/Button/Button";
+import { statusFilters } from "@/redux/constants";
+import { selectStatusFilter } from "@/redux/selectors";
+import { setStatusFilter } from "@/redux/filtersSlice";
 import css from "./StatusFilter.module.css";
-import { statusFilters } from "../constants";
-import { setStatusFilter } from "@/redux/actions";
-import { getStatusFilter } from "@/redux/selectors";
-
-const btnList = [
-  {
-    id: crypto.randomUUID(),
-    status: statusFilters.all,
-    text: "All",
-  },
-  {
-    id: crypto.randomUUID(),
-    status: statusFilters.active,
-    text: "Active",
-  },
-  {
-    id: crypto.randomUUID(),
-    status: statusFilters.completed,
-    text: "Completed",
-  },
-];
 
 export const StatusFilter = () => {
-  const filter = useSelector(getStatusFilter);
   const dispatch = useDispatch();
+  const filter = useSelector(selectStatusFilter);
 
-  const handleChangeFilter = (status) => dispatch(setStatusFilter(status));
+  const handleFilterChange = (filter) => dispatch(setStatusFilter(filter));
 
   return (
     <div className={css.wrapper}>
-      {btnList.map(({ id, text, status }) => (
-        <Button
-          key={id}
-          selected={status === filter}
-          onClick={() => handleChangeFilter(status)}
-        >
-          {text}
-        </Button>
-      ))}
+      <Button
+        selected={filter === statusFilters.all}
+        onClick={() => handleFilterChange(statusFilters.all)}
+      >
+        All
+      </Button>
+      <Button
+        selected={filter === statusFilters.active}
+        onClick={() => handleFilterChange(statusFilters.active)}
+      >
+        Active
+      </Button>
+      <Button
+        selected={filter === statusFilters.completed}
+        onClick={() => handleFilterChange(statusFilters.completed)}
+      >
+        Completed
+      </Button>
     </div>
   );
 };

@@ -1,35 +1,67 @@
-# Q&A
+# Tasks
 
-1. What is redux ? - Global state, props drilling
-2. Flow data in redux vs react ?
-3. Explain flow data on schema in notes ?
-4. Advantages/disadvantages ?
+1. Setup Routing:
 
-disadvantages
+- HomePage
+- LoginPage
+- RegisterPage
+- TasksPage
 
-1. New library
-2. Boilerplate code
+2. Add css for show current position
 
-Advantages
+3. Separate redux data:
 
-1. Global state
-2. Community
+- auth: authSelectors, authSlice...
+- contacts: contactsSelectors, contactsSlice...
 
-## Getting started
+4. Connect authReducer to store and add redux-persist
 
-Need to install
+5. In auth redux create:
 
-1.  redux
-2.  react-redux
-3.  @redux-devtools/extension
+- operations: CRUD operations (only current, logout, login)
+- selectors
+- authSlice:
 
-**CreateStore**
+State example for auth
 
-## How to up local json-server
+```js
+const initialState = {
+  user: { name: null, email: null },
+  token: null,
+  isLoggedIn: false,
+  isRefreshing: false,
+};
+```
 
-1. npm install json-server
-2. Ad db.json data in root your project
-3. npx json-server --watch db.json
-4. By default server available on http://localhost:3000
-5. Change it npx json-server --watch db.json --port 8080
-6. Add script in package.json
+6. Create a custom hook to encapsulate logic that is reused across multiple components.
+
+7. Do re-export in components
+
+8. Add lazy-loading for component that need
+
+9. Add Private, Restricted routes
+
+## Fake backend
+
+- BASE_URL - https://dummyjson.com
+
+**ENDPOINTS**
+
+[Auth](https://dummyjson.com/docs/auth)
+
+1.  Auth:
+
+- /auth/me - get current user
+- /auth/login - login
+- /logout - not exist ❌
+- /register - not exist ❌
+
+[Users](https://dummyjson.com/docs/users)
+
+2. Todos
+
+- /todos - get All todos
+- /todos/:1 - single
+- /todos/add - create todo
+- /todos/:1 - update todo
+- todos/:1 - delete todo
