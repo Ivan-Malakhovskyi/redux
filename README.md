@@ -2,23 +2,35 @@
 
 1. Setup Routing:
 
+Private routes:
+
+/tasks
+
+Public:
+
+/login
+/register
+/home
+
 - HomePage
 - LoginPage
 - RegisterPage
 - TasksPage
+
+Add SharedLayout
 
 2. Add css for show current position
 
 3. Separate redux data:
 
 - auth: authSelectors, authSlice...
-- contacts: contactsSelectors, contactsSlice...
+- tasks: tasksSelectors, tasksSlice...
 
-4. Connect authReducer to store and add redux-persist
+4. Connect authReducer to store and add redux-persist (token)
 
 5. In auth redux create:
 
-- operations: CRUD operations (only current, logout, login)
+- operations: CRUD operations (current, login)
 - selectors
 - authSlice:
 
