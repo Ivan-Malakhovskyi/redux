@@ -5,7 +5,7 @@ import { AppBar } from "@/components/AppBar/AppBar";
 import { TaskForm } from "@/components/TaskForm/TaskForm";
 import { TaskList } from "@/components/TaskList/TaskList";
 import { selectError, selectIsLoading } from "@/redux/selectors";
-import { fetchTasks } from "@/redux/operations";
+import { fetchTasks } from "@/redux/tasks/tasksOperations";
 
 export const App = () => {
   const dispatch = useDispatch();

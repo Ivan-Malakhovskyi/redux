@@ -1,7 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchTasks, addTask, deleteTask, toggleCompleted } from "./operations";
+import {
+  fetchTasks,
+  addTask,
+  deleteTask,
+  toggleCompleted,
+} from "./tasksOperations";
 
-const handlePending = state => {
+const handlePending = (state) => {
   state.isLoading = true;
 };
 
@@ -17,7 +22,7 @@ const tasksSlice = createSlice({
     isLoading: false,
     error: null,
   },
-  extraReducers: builder => {
+  extraReducers: (builder) => {
     builder
       .addCase(fetchTasks.pending, handlePending)
       .addCase(fetchTasks.fulfilled, (state, action) => {
@@ -38,7 +43,7 @@ const tasksSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         const index = state.items.findIndex(
-          task => task.id === action.payload.id
+          (task) => task.id === action.payload.id,
         );
         state.items.splice(index, 1);
       })
@@ -48,7 +53,7 @@ const tasksSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         const index = state.items.findIndex(
-          task => task.id === action.payload.id
+          (task) => task.id === action.payload.id,
         );
         state.items.splice(index, 1, action.payload);
       })
